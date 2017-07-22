@@ -1,0 +1,40 @@
+{
+  "name": "dash-components-table-own",
+  "version": "0.0.1",
+  "description": "Custom implementation of a dash component "Table"",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garmoncheg/dash-components-table-own.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garmoncheg/dash-components-table-own/issues"
+  },
+  "homepage": "https://github.com/garmoncheg/dash-components-table-own",
+  "scripts": {
+    "copy-lib": "cp lib/* dash_components_table_own",
+    "demo": "builder run demo",
+    "install-local": "npm run copy-lib && python setup.py install",
+    "prepublish": "npm test && builder run build-dist && npm run copy-lib",
+    "publish-all": "npm publish && python setup.py sdist upload",
+    "publish-pypi": "npm run prepublish && python setup.py sdist upload",
+    "start": "builder run build-dev",
+    "test": "builder run check",
+    "test-watch": "builder run test-frontend-watch",
+    "test-debug": "builder run test-frontend-debug",
+    "uninstall-local": "pip uninstall dash-components-table-own -y"
+  },
+  "dependencies": {
+    "builder": "3.2.2",
+    "dash-components-archetype": "^0.2.7",
+    "prop-types": "^15.5.9",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "dash-components-archetype-dev": "^0.2.7",
+    "enzyme": "^2.8.2",
+    "react-test-renderer": "^15.5.4"
+  }
+}

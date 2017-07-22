@@ -1,0 +1,15 @@
+build/
+coverage/
+dist/
+lib/
+lib/bundle.js*
+node_modules/
+dash_components_table_own/metadata.json
+dash_components_table_own/bundle.js*
+.npm
+vv/
+venv/
+*.pyc
+*.egg-info
+*.log
+.DS_Store
