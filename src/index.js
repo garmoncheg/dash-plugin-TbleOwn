@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import ExampleComponent from './components/ExampleComponent.react';
+import TableOwn from './components/TableOwn.react';
 
 export {
-    ExampleComponent
+    TableOwn
 };

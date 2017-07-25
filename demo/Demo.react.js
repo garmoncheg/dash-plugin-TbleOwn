@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ExampleComponent} from '../src';
+import {TableOwn} from '../src';
 
 class Demo extends Component {
     render() {
@@ -8,9 +8,10 @@ class Demo extends Component {
                 <h1>dash-components-table-own Demo</h1>
 
                 <hr/>
-                <h2>ExampleComponent</h2>
-                <ExampleComponent
+                <h2>TableOwn</h2>
+                <TableOwn
                     label="This is an example label"
+                    tabel="table_text"
                 />
                 <hr/>
             </div>

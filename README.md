@@ -1,6 +1,8 @@
 # dash-components-table-own
 
 Custom implementation of a dash component "Table"
+Done as a proof of concept for building custom component for dash.
+Table is wrapped with a div and has a header label inside of it.
 
 ## Dash
 
