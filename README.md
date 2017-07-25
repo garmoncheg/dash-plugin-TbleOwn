@@ -25,12 +25,20 @@ $ npm start
 You can start up a demo development server to see a demo of the rendered
 components:
 
+Have this component built and installed. E.g.
+
 ```sh
-$ builder run demo
-$ open http://localhost:9000
+$ npm build
+$ Python setup.py install
 ```
 
-You have to maintain the list of components in `demo/Demo.react.js`.
+Using this interpreter with installed component run:
+
+```sh
+$ cd TestApp
+$ python3 app.py
+```
+go to: http://localhost:8050
 
 ### Code quality and tests
 
