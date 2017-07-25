@@ -1,42 +1,23 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-export default class TableOwn extends Component {
+export default class DataGridOwn extends Component {
     render() {
         const props = this.props;
         const label = props.label;
 
-        if (props.fireEvent || props.setProps) {
-            return (
-                <div className={props.wrapperClass}>
-                    <h1>{label}</h1>
-                    <table
-                        onClick={() => {
-                            props.n_clicks = props.n_clicks || 0;
-                            if (props.setProps) props.setProps({n_clicks: props.n_clicks + 1});
-                            if (props.fireEvent) props.fireEvent({event: 'click'});
-                        }}
-                        {...props}
-                    >
-                        {props.children}
-                    </table>
-                </div>
-            );
-        } else {
-            return (
-                <div className={props.wrapperClass}>
-                    <h1>{label}</h1>
-                    <table {...props}>
-                        {props.children}
-                    </table>
-                </div>
-            );
-        }
+        return (
+            <div className={props.wrapperClass}>
+                <h1>{label}</h1>
+                <table {...props}>
+                    {props.children}
+                </table>
+            </div>
+        );
     }
 }
 
-
-TableOwn.propTypes = {
+DataGridOwn.propTypes = {
     /**
      * Header text for the table
      */
