@@ -31,7 +31,11 @@ app.layout = html.Div(children=[
         label="US Agriculture Exports (2011)",
         id='my-table',
         wrapperClass='test-class'
+    ),
+    dto.DataGridOwn(
+        label="own data grid implementation"
     )
+
 ])
 
 
