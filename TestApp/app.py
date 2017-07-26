@@ -3,6 +3,7 @@ import dash
 import dash_html_components as html
 import os
 import pandas as pd
+import csv
 
 
 # Init of data file and dash
@@ -11,6 +12,14 @@ data_path = os.path.join(os.getcwd(), os.path.join('..', 'data'))
 data_file = os.path.join(data_path, 'usa-agricultural-exports-2011.csv')
 df = pd.read_csv(data_file)
 
+
+# Read the CSV file
+csv_data = []
+with open(data_file, 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in reader:
+        csv_data.append(row)
+# print(csv_data)
 
 def generate_table(dataframe, max_rows=10):
     """ Generates Table contents (Inner HTML)
@@ -26,16 +35,17 @@ def generate_table(dataframe, max_rows=10):
 
 # Using custom component
 app.layout = html.Div(children=[
+    dto.DataGridOwn(
+        label="own data grid implementation",
+        csv_data=csv_data
+    ),
+
     dto.TableOwn(
         generate_table(df),
         label="US Agriculture Exports (2011)",
         id='my-table',
         wrapperClass='test-class'
-    ),
-    dto.DataGridOwn(
-        label="own data grid implementation"
     )
-
 ])
 
 
