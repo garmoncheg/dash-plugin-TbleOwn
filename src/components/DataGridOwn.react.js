@@ -8,35 +8,14 @@ export default class DataGridOwn extends Component {
         const csv_data = props.csv_data;
 
         // Demo data
-        const CONTACTS = [
-            [0, 'id', 'name', 'phoneNumber', 'image'],
-            [1,'Darth Vader', '+250966666666', 'img/darth.gif'],
-            [2,'Princess Leia', '+250966344466','img/leia.gif'],
-            [3,'Luke Skywalker', '+250976654433','img/luke.gif'],
-            [4,'Chewbacca', '+250456784935','img/chewbacca.gif']
-        ] || csv_data; // TODO: this instead of demo data.
+        const CONTACTS = csv_data || [
+            ['', 'id', 'name', 'phoneNumber', 'image'],
+            ['0','Darth Vader', '+250966666666', 'img/darth.gif'],
+            ['1','Princess Leia', '+250966344466','img/leia.gif'],
+            ['2','Luke Skywalker', '+250976654433','img/luke.gif'],
+            ['3','Chewbacca', '+250456784935','img/chewbacca.gif']
+        ];
 
-        var TD = React.createClass({
-            render: function() {
-                return <td keys={this.props.key}>{this.props.td}</td>
-            }
-        });
-
-        var TR = React.createClass({
-            render: function() {
-                return <tr>
-                    {
-                        this.props.td.map(function(el) {
-                            if (el[0]===0) {  // TODO: render conditionally table header.
-                                return <TH key={el[0]} td={el} />
-                            } else {
-                                return <TD key={el[0]} td={el} keys={el[0]}/>
-                            }
-                        })
-                    }
-                </tr>
-            }
-        });
 
         var TH = React.createClass({
             render: function() {
@@ -44,14 +23,51 @@ export default class DataGridOwn extends Component {
             }
         });
 
+        var TD = React.createClass({
+            render: function() {
+                return <td>{this.props.td}</td>
+            }
+        });
+
+        // Body component
+        var TRTD = React.createClass({
+            render: function() {
+                return <tr>
+                    {
+                        this.props.td.map(function(el) {
+                            return <TD key={el} td={el} />
+                        })
+                    }
+                </tr>
+            }
+        });
+
+        // Header Component
+        var TRTH = React.createClass({
+            render: function() {
+                return <tr>
+                    {
+                        this.props.td.map(function(el) {
+                            return <TH key={el} td={el} />
+                        })
+                    }
+                </tr>
+            }
+        });
+
         return (
-            <div className={props.wrapperClass}>
+            <div>
                 <h1>{label}</h1>
                 <table>
                     {
                         //TODO: CONTACTS.shift();
                         CONTACTS.map(function(el) {
-                            return <TR key={el[0]} td={el} />
+                            if(!el[0]) {
+                                return <TRTH key={el} td={el} />
+                            } else {
+                                return <TRTD key={el} td={el} />
+                            }
+
                         })
                     }
                 </table>
@@ -68,14 +84,14 @@ DataGridOwn.propTypes = {
 
     /**
      * python read the CSV file data in format like so:
-     * csv_data = = [
-            [0, 'id', 'name', 'phoneNumber', 'image'],
-            [1,'Darth Vader', '+250966666666', 'img/darth.gif'],
-            [2,'Princess Leia', '+250966344466','img/leia.gif'],
-            [3,'Luke Skywalker', '+250976654433','img/luke.gif'],
-            [4,'Chewbacca', '+250456784935','img/chewbacca.gif']
+     * csv_data = [
+            ['', 'id', 'name', 'phoneNumber', 'image'],
+            ['0','Darth Vader', '+250966666666', 'img/darth.gif'],
+            ['1','Princess Leia', '+250966344466','img/leia.gif'],
+            ['2','Luke Skywalker', '+250976654433','img/luke.gif'],
+            ['3','Chewbacca', '+250456784935','img/chewbacca.gif']
         ]
      */
-    'csv_data': PropTypes.array
+    'csv_data': PropTypes.object
 
 };

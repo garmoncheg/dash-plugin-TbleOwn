@@ -16,10 +16,10 @@ df = pd.read_csv(data_file)
 # Read the CSV file
 csv_data = []
 with open(data_file, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in reader:
+        #row = [item if item != '0.0' else 'none' for item in row]
         csv_data.append(row)
-# print(csv_data)
 
 def generate_table(dataframe, max_rows=10):
     """ Generates Table contents (Inner HTML)
