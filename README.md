@@ -40,6 +40,10 @@ $ python3 app.py
 ```
 go to: http://localhost:8050
 
+### Looks like so:
+
+![component screenshot](https://www.github.com/garmoncheg/dash-plugin-TbleOwn/raw/master/screenshots/dg_impl.png)
+
 ### Code quality and tests
 
 #### To run lint and unit tests:
