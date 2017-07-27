@@ -6,8 +6,7 @@ import pandas as pd
 import csv
 
 
-# Init of data file and dash
-app = dash.Dash()
+# Init of data file
 data_path = os.path.join(os.getcwd(), os.path.join('..', 'data'))
 data_file = os.path.join(data_path, 'usa-agricultural-exports-2011.csv')
 df = pd.read_csv(data_file)
@@ -18,8 +17,8 @@ csv_data = []
 with open(data_file, 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in reader:
-        #row = [item if item != '0.0' else 'none' for item in row]
         csv_data.append(row)
+
 
 def generate_table(dataframe, max_rows=10):
     """ Generates Table contents (Inner HTML)
@@ -33,7 +32,8 @@ def generate_table(dataframe, max_rows=10):
         ]) for i in range(min(len(dataframe), max_rows))]
 
 
-# Using custom component
+# Using custom components
+app = dash.Dash()
 app.layout = html.Div(children=[
     dto.DataGridOwn(
         label="own data grid implementation",

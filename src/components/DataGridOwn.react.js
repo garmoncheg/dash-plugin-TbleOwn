@@ -5,11 +5,9 @@ export default class DataGridOwn extends Component {
     render() {
         let uuid = 0;
         const props = this.props;
-        const label = props.label;
-        const csv_data = props.csv_data;
 
         // Demo data
-        const DATA = csv_data || [
+        const DATA = props.csv_data || [
             ['', 'id', 'name', 'phoneNumber', 'image'],
             ['0','Darth Vader', '+250966666666', 'img/darth.gif'],
             ['1','Princess Leia', '+250966344466','img/leia.gif'],
@@ -62,21 +60,15 @@ export default class DataGridOwn extends Component {
 
         return (
             <div>
-                <h1>{label}</h1>
+                <h1>{props.label}</h1>
                 <table>
                     {
                         DATA.map(function(el) {
                             if(!el[0]) {
                                 return <TRTH key={el} td={el} />
                             } else {
-                                //if (parseInt(el[0]) < max_rows) {
-
-                                    return <TRTD key={el} td={el} />
-                                //} else {
-                                //    return
-                                //}
+                                return <TRTD key={el} td={el} />
                             }
-
                         })
                     }
                 </table>
@@ -110,12 +102,6 @@ DataGridOwn.propTypes = {
             for row in reader:
                 csv_data.append(row)
      */
-    'csv_data': PropTypes.object,
-
-    /**
-     * Number of maximum column rows to render. Default is 10
-     */
-        // TODO: make this work.
-    'max_rows': PropTypes.number || 10
+    'csv_data': PropTypes.object
 
 };
